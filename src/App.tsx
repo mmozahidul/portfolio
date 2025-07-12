@@ -83,7 +83,7 @@ const HomePage = () => {
         <section id="services" className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#F3F4F6]">
           {/* Services content... */}
         </section>
-        {/*<div id="portfolio"> <PortfolioPreview /> </div>*/}
+        <div id="portfolio"> <PortfolioPreview /> </div>
         <section id="testimonials" className="py-20 bg-gradient-to-br from-[#0F172A] to-[#1E40AF]">
           {/* Testimonials content... */}
         </section>

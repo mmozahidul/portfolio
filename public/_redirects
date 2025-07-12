@@ -1,0 +1,5 @@
+# Custom domain redirect
+https://mozahidul.netlify.app/*    https://mozahidul.online/:splat   301!
+
+# Netlify redirects file for SPA routing
+/*    /index.html   200

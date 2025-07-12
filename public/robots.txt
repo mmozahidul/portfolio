@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mozahidul.online/sitemap.xml
+
+# Important pages
+Allow: /portfolio
+Allow: /
+
+# Block unnecessary crawling
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$

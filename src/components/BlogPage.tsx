@@ -11,32 +11,41 @@ interface Post {
 const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      // The fix is here: { as: 'raw' } tells Vite to import the file as plain text
-      const postFiles = import.meta.glob('/src/posts/*.md', { as: 'raw' });
+      try {
+        const postFiles = import.meta.glob('/src/posts/*.md', { as: 'raw' });
+        
+        const postsData = await Promise.all(
+          Object.entries(postFiles).map(async ([path, resolver]) => {
+            const markdownContent = await resolver();
+            const { data } = matter(markdownContent);
+            
+            const slug = path.split('/').pop()?.replace('.md', '') || '';
 
-      const postsData = await Promise.all(
-        Object.entries(postFiles).map(async ([path, resolver]) => {
-          // resolver() now directly returns the raw markdown string
-          const markdownContent = await resolver();
-          const { data } = matter(markdownContent);
+            return {
+              slug,
+              title: data.title || 'Untitled Post',
+              date: data.date ? new Date(data.date).toISOString() : 'No date',
+            };
+          })
+        );
+        
+        postsData.sort((a, b) => {
+          const dateA = a.date !== 'No date' ? new Date(a.date).getTime() : 0;
+          const dateB = b.date !== 'No date' ? new Date(b.date).getTime() : 0;
+          return dateB - dateA;
+        });
 
-          const slug = path.split('/').pop()?.replace('.md', '') || '';
-
-          return {
-            slug,
-            title: data.title || 'Untitled Post',
-            date: data.date ? new Date(data.date).toLocaleDateString() : 'No date',
-          };
-        })
-      );
-
-      postsData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-      setPosts(postsData);
-      setLoading(false);
+        setPosts(postsData);
+      } catch (e) {
+        console.error("Failed to fetch posts:", e);
+        setError("Failed to load posts. Please check the browser console for details.");
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchPosts();
@@ -44,6 +53,10 @@ const BlogPage: React.FC = () => {
 
   if (loading) {
     return <div className="text-center py-20">Loading posts...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-20 text-red-500">{error}</div>;
   }
 
   return (
@@ -58,11 +71,11 @@ const BlogPage: React.FC = () => {
                   {post.title}
                 </Link>
               </h2>
-              <p className="text-gray-500 text-sm">{post.date}</p>
+              <p className="text-gray-500 text-sm">{post.date !== 'No date' ? new Date(post.date).toLocaleDateString() : 'Date not specified'}</p>
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-600">No blog posts found.</p>
+          <p className="text-center text-gray-600">No blog posts found. You can add one in your admin panel!</p>
         )}
       </div>
     </div>

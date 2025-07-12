@@ -11,11 +11,9 @@ import PortfolioPreview from './components/PortfolioPreview';
 import WhatsAppChat from './components/WhatsAppChat';
 import ScrollToTop from './components/ScrollToTop';
 
-// --- Static data arrays are placed outside the components ---
 const services = [ { icon: Plane, title: "Google Ads Management", description: "Strategic campaign setup, optimization, and management to maximize ROI and drive qualified traffic.", features: [ "Campaign Strategy", "Keyword Research", "Ad Copy Creation", "Bid Management", "Performance Tracking" ] }, { icon: Search, title: "SEO Optimization", description: "Comprehensive SEO services including local and technical optimization to improve search rankings.", features: [ "Technical SEO", "Local SEO", "Keyword Research", "Content Optimization", "Link Building" ] }, { icon: Globe, title: "WordPress Development", description: "Custom WordPress websites that are fast, secure, and optimized for conversions.", features: [ "Custom Design", "Speed Optimization", "Security Setup", "Mobile Responsive", "SEO Ready" ] }, { icon: PenTool, title: "Content Marketing", description: "Strategic content creation and marketing to engage audiences and drive conversions.", features: [ "Content Strategy", "Blog Writing", "Social Media", "Email Marketing", "Content Calendar" ] }, { icon: BarChart3, title: "Digital Strategy Consulting", description: "Comprehensive digital marketing strategy development and implementation guidance.", features: [ "Market Analysis", "Competitor Research", "Strategy Planning", "Implementation", "Performance Review" ] }, { icon: Zap, title: "Conversion Optimization", description: "Optimize your website and campaigns for maximum conversions and revenue growth.", features: [ "A/B Testing", "Landing Pages", "User Experience", "Analytics Setup", "Performance Tracking" ] } ];
 const testimonials = [ { name: "Randibagley", country: "🇺🇸 United States", text: "Moz helped me create high-quality backlinks and even found additional sites himself. Clear communication, super-fast delivery, and spot-on strategy — already seeing results!" }, { name: "Matt Fitch", country: "🇺🇸 United States", text: "Mozahidul consistently delivers fast, accurate, and technically strong work. His visual skills and attention to detail are excellent. We'll definitely work with him again." }, { name: "Googleauroin", country: "🇮🇳 India", text: "Very professional and always ahead of deadlines. We've worked together many times — he never disappoints. Highly recommended for ongoing digital projects." }, { name: "JimmyJim123476", country: "🇦🇺 Australia", text: "Absolutely phenomenal! Professional, respectful, and sharp. Moz took my business to the next level and exceeded my expectations every single time." }, { name: "Badmem0ry", country: "🇨🇦 Canada", text: "Outstanding work. He took time to understand my goals, delivered top-tier virtual assistant support, and nailed exactly what I needed. A+!" }, { name: "christiandoyle", country: "🇺🇸 United States", text: "This seller is very ethical and a hard worker. After doing initial work for me he even went and did more work I requested before even paying paid. He delivered faster than expected and I will use him again. I had him make me a spreadsheet of directory listings and the details of each. Thank you, again Rise_Fast!" } ];
 
-// --- This new component holds all your homepage content ---
 const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -73,40 +71,20 @@ const HomePage = () => {
         </div>
       </header>
       <main>
-        {/* All your page sections are here */}
-        <section id="hero" className="pt-20 md:pt-32 pb-24 bg-gradient-to-br from-[#1E40AF] to-[#1D4ED8] relative overflow-hidden">
-          {/* Hero content... */}
-        </section>
-        <section id="about" className="py-24 bg-white">
-          {/* About content... */}
-        </section>
-        <section id="services" className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#F3F4F6]">
-          {/* Services content... */}
-        </section>
-        <div id="portfolio"> <PortfolioPreview /> </div>
-        <section id="testimonials" className="py-20 bg-gradient-to-br from-[#0F172A] to-[#1E40AF]">
-          {/* Testimonials content... */}
-        </section>
-        <section id="contact" className="py-20 bg-gradient-to-br from-white to-[#F8F9FA] border-t border-[#F3F4F6]">
-          {/* Contact content... */}
-        </section>
+          {/* All your page sections... */}
       </main>
-      <footer className="bg-gradient-to-br from-[#0F172A] to-[#1E40AF] text-white py-16">
-        {/* Footer content... */}
+      <footer>
+          {/* Your footer... */}
       </footer>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Person", "name": "Mozahidul Islam", "alternateName": "Mozahidul", "url": "https://mozahidul.online", "image": { "@type": "ImageObject", "url": "https://mozahidul.online/Mozahidul.jpg", "width": 400, "height": 400 }, "sameAs": [ "https://www.linkedin.com/in/md-mozahidul-islam/", "https://fiverr.com/rise_fast" ], "jobTitle": "Digital Marketing Expert", "worksFor": { "@type": "Organization", "name": "Freelance Digital Marketing" }, "description": "Mozahidul Islam is a digital marketing expert with 8+ years of experience specializing in Google Ads, SEO, and WordPress solutions for businesses worldwide.", "knowsAbout": [ "Google Ads Management", "Search Engine Optimization", "WordPress Development", "Digital Marketing Strategy", "E-commerce Marketing", "Content Marketing" ], "hasOccupation": { "@type": "Occupation", "name": "Digital Marketing Specialist", "occupationLocation": { "@type": "Place", "name": "Global (Remote)" }, "skills": [ "Google Ads", "SEO", "WordPress", "Digital Strategy", "Content Marketing" ] }, "award": [ "340% Average ROAS Improvement", "50+ Successful Projects Completed", "8+ Years Professional Experience" ] }) }} />
     </div>
   );
 };
 
-
-// --- This is the main App component that handles all the routing ---
 function App() {
   return (
     <>
       <ScrollToTop />
       <WhatsAppChat phoneNumber="8801738170257" />
-      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogPage />} />

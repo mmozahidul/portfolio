@@ -4,11 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 
-// This is the correct way to add the Buffer helper
-import { Buffer } from 'buffer';
-globalThis.Buffer = Buffer;
-
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>

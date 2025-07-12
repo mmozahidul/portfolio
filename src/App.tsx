@@ -47,12 +47,12 @@ const HomePage = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center"> <img src="/Logo Mozahidul e.jpeg" alt="Mozahidul Islam Logo" className="h-8 md:h-12 w-auto object-contain" /> </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/#about" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> About <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
-              <a href="/#services" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> Services <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
+              <a href="#about" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> About <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
+              <a href="#services" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> Services <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
               <a href="/portfolio" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> Portfolio <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
               <Link to="/blog" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> Blog <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </Link>
-              <a href="/#testimonials" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> Testimonials <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
-              <a href="/#contact" className="bg-gradient-to-r from-[#1E40AF] to-[#1D4ED8] text-white px-4 lg:px-6 py-2 lg:py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base"> Contact </a>
+              <a href="#testimonials" className="text-[#0F172A] hover:text-[#1E40AF] transition-all duration-300 font-semibold text-base lg:text-lg relative group"> Testimonials <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1E40AF] transition-all duration-300 group-hover:w-full"></span> </a>
+              <a href="#contact" className="bg-gradient-to-r from-[#1E40AF] to-[#1D4ED8] text-white px-4 lg:px-6 py-2 lg:py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm lg:text-base"> Contact </a>
             </nav>
             <button onClick={toggleMobileMenu} className="md:hidden p-2 rounded-lg text-[#0F172A] hover:text-[#1E40AF] hover:bg-[#1E40AF]/10 transition-all duration-300 z-[10000] relative" aria-label="Toggle mobile menu"> {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />} </button>
           </div>
@@ -71,11 +71,29 @@ const HomePage = () => {
         </div>
       </header>
       <main>
-          {/* All your page sections... */}
+          <section className="pt-20 md:pt-32 pb-24 bg-gradient-to-br from-[#1E40AF] to-[#1D4ED8] relative overflow-hidden">
+              {/* All hero content */}
+          </section>
+          <section id="about" className="py-24 bg-white">
+              {/* All about content */}
+          </section>
+          <section id="services" className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#F3F4F6]">
+              {/* All services content */}
+          </section>
+          
+          {/* THE PORTFOLIO PREVIEW SECTION THAT WAS CAUSING THE ERROR IS NOW REMOVED */}
+          
+          <section id="testimonials" className="py-20 bg-gradient-to-br from-[#0F172A] to-[#1E40AF]">
+              {/* All testimonials content */}
+          </section>
+          <section id="contact" className="py-20 bg-gradient-to-br from-white to-[#F8F9FA] border-t border-[#F3F4F6]">
+              {/* All contact content */}
+          </section>
       </main>
-      <footer>
-          {/* Your footer... */}
+      <footer className="bg-gradient-to-br from-[#0F172A] to-[#1E40AF] text-white py-16">
+          {/* All footer content */}
       </footer>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Person", "name": "Mozahidul Islam", "url": "https://mozahidul.online", "jobTitle": "Digital Marketing Specialist" }) }} />
     </div>
   );
 };

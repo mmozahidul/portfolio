@@ -14,15 +14,15 @@ const BlogPage: React.FC = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      // This uses Vite's glob import feature to get all markdown files
-      const postFiles = import.meta.glob('/src/posts/*.md');
+      // The fix is here: { as: 'raw' } tells Vite to import the file as plain text
+      const postFiles = import.meta.glob('/src/posts/*.md', { as: 'raw' });
 
       const postsData = await Promise.all(
         Object.entries(postFiles).map(async ([path, resolver]) => {
-          const postModule = await resolver() as { default: string };
-          const { data } = matter(postModule.default);
+          // resolver() now directly returns the raw markdown string
+          const markdownContent = await resolver();
+          const { data } = matter(markdownContent);
 
-          // Create a URL-friendly slug from the file path
           const slug = path.split('/').pop()?.replace('.md', '') || '';
 
           return {
@@ -33,7 +33,6 @@ const BlogPage: React.FC = () => {
         })
       );
 
-      // Sort posts by date, newest first
       postsData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
       setPosts(postsData);
